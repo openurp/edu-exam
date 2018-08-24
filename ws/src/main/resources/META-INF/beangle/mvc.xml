@@ -2,7 +2,7 @@
 <mvc>
   <profile name="openurp-edu-exam-ws" package="org.openurp.edu.exam.ws">
     <action suffix="WS" defaultMethod="index" />
-    <url path="/" suffix="" style="plur-seo" />
+    <url path="/" suffix="" style="seo" />
     <interceptors>
       <interceptor name="web.Interceptor.hibernate" />
       <interceptor name="web.Interceptor.cors" />

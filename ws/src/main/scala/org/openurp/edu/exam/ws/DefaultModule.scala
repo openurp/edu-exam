@@ -16,29 +16,13 @@
  * You should have received a copy of the GNU Lesser General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package org.openurp.edu.exam.model
+package org.openurp.edu.exam.ws
 
-import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.Remark
-import org.openurp.base.model.Semester
-import org.openurp.edu.base.code.model.{ ExamStatus, ExamType }
-import org.openurp.edu.base.model.Student
-import org.openurp.edu.course.model.Clazz
+import org.beangle.cdi.bind.BindModule
 
-class ExamStudent extends LongId with Remark {
+class DefaultModule extends BindModule {
 
-  var clazz: Clazz = _
-
-  var semester: Semester = _
-
-  var std: Student = _
-
-  var examRoom: Option[ExamRoom] = None
-
-  var examType: ExamType = _
-
-  var activity: ExamActivity = _
-
-  var seatNo: Short = _
-
+  protected def binding(): Unit = {
+    bind(classOf[StudentWS])
+  }
 }

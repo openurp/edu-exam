@@ -14,12 +14,7 @@
   <dependencies>
     <dependency>
       <groupId>org.openurp.app</groupId>
-      <artifactId>openurp-app-cas_2.12</artifactId>
-      <version>${openurp.app.version}</version>
-    </dependency>
-    <dependency>
-      <groupId>org.openurp.app</groupId>
-      <artifactId>openurp-app-web_2.12</artifactId>
+      <artifactId>openurp-app-api_2.12</artifactId>
       <version>${openurp.app.version}</version>
     </dependency>
     <dependency>
@@ -33,11 +28,6 @@
       <version>${openurp.api.version}</version>
     </dependency>
     <dependency>
-      <groupId>org.openurp.hr.base</groupId>
-      <artifactId>openurp-hr-base-api</artifactId>
-      <version>${openurp.api.version}</version>
-    </dependency>
-    <dependency>
       <groupId>org.beangle.webmvc</groupId>
       <artifactId>beangle-webmvc-entity-plugin_2.12</artifactId>
       <version>${beangle.webmvc.version}</version>
@@ -47,23 +37,12 @@
       <artifactId>beangle-webmvc-spring-plugin_2.12</artifactId>
     </dependency>
     <dependency>
-      <groupId>org.beangle.webui</groupId>
-      <artifactId>beangle-webui-tag_2.12</artifactId>
-      <version>${beangle.webui.version}</version>
-    </dependency>
-    <dependency>
       <groupId>org.beangle.data</groupId>
       <artifactId>beangle-data-hibernate_2.12</artifactId>
     </dependency>
     <dependency>
-      <groupId>org.beangle.data</groupId>
-      <artifactId>beangle-data-transfer_2.12</artifactId>
-      <version>${beangle.data.version}</version>
-    </dependency>
-    <dependency>
-      <groupId>org.beangle.webui</groupId>
-      <artifactId>beangle-webui-bootstrap_2.12</artifactId>
-      <version>${beangle.webui.version}</version>
+      <groupId>org.beangle.serializer</groupId>
+      <artifactId>beangle-serializer-json_2.12</artifactId>
     </dependency>
     <dependency>
       <groupId>javax.servlet</groupId>
