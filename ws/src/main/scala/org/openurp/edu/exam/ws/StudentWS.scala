@@ -66,7 +66,6 @@ class StudentWS extends ActionSupport {
   private def getResult(std: Student, semester: Semester, examTypeId: Option[Int]): Properties = {
     val builder = OqlBuilder.from(classOf[ExamStudent], "es")
     builder.where("es.std=:std and es.semester=:semester", std, semester)
-    builder.where("es.activity.state>0")
     examTypeId foreach { et =>
       builder.where("es.activity.examType.id=:examTypeId", et)
     }
@@ -86,12 +85,15 @@ class StudentWS extends ActionSupport {
     val props = new Properties(es, "examType.name")
     props.put("crn", es.clazz.crn)
     props.put("course", new Properties(es.clazz.course, "code", "name"))
-    if (es.activity.state.timePublished) {
-      props.put("examTime", es.activity.examOn + " " + es.activity.beginAt.toString + "~" + es.activity.endAt.toString)
-      props.put("seatNo", es.seatNo)
-    }
-    if (es.activity.state.roomPublished && es.examRoom.isDefined) {
-      props.put("examRoom", es.examRoom.get.room.name)
+    if (null != es.activity) {
+      val ea = es.activity
+      if (ea.state.timePublished) {
+        props.put("examTime", ea.examOn + " " + ea.beginAt.toString + "~" + ea.endAt.toString)
+        props.put("seatNo", es.seatNo)
+      }
+      if (ea.state.roomPublished && es.examRoom.isDefined) {
+        props.put("examRoom", es.examRoom.get.room.name)
+      }
     }
     props
   }
