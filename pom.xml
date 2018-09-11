@@ -7,10 +7,10 @@
     <version>0.2.19</version>
   </parent>
   <groupId>org.openurp.edu.exam</groupId>
-  <artifactId>openurp-edu-exam-web-parent</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
+  <artifactId>openurp-edu-exam-parent</artifactId>
+  <version>0.0.1</version>
   <packaging>pom</packaging>
-  <name>OpenURP Edu exam Web Parent</name>
+  <name>OpenURP Edu Exam Parent</name>
 
   <modules>
     <module>ws</module>
