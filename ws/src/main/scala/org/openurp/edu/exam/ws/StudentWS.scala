@@ -85,8 +85,7 @@ class StudentWS extends ActionSupport {
     val props = new Properties(es, "examType.name")
     props.put("crn", es.clazz.crn)
     props.put("course", new Properties(es.clazz.course, "code", "name"))
-    if (null != es.activity) {
-      val ea = es.activity
+    es.activity foreach { ea =>
       if (ea.state.timePublished) {
         props.put("examTime", ea.examOn + " " + ea.beginAt.toString + "~" + ea.endAt.toString)
         props.put("seatNo", es.seatNo)
