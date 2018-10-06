@@ -4,11 +4,11 @@
   <parent>
     <groupId>org.openurp</groupId>
     <artifactId>openurp-parent</artifactId>
-    <version>0.2.19</version>
+    <version>0.2.20</version>
   </parent>
   <groupId>org.openurp.edu.exam</groupId>
   <artifactId>openurp-edu-exam-parent</artifactId>
-  <version>0.0.1</version>
+  <version>0.0.2</version>
   <packaging>pom</packaging>
   <name>OpenURP Edu Exam Parent</name>
 
@@ -17,8 +17,8 @@
   </modules>
 
   <properties>
-    <openurp.api.version>0.1.2</openurp.api.version>
-    <openurp.app.version>0.1.2</openurp.app.version>
+    <openurp.app.version>0.1.3</openurp.app.version>
+    <openurp.api.version>0.2.0</openurp.api.version>
   </properties>
 
 </project>
