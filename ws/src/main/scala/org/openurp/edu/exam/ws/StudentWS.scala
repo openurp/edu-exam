@@ -18,18 +18,13 @@
  */
 package org.openurp.edu.exam.ws
 
-import org.beangle.webmvc.api.action.ActionSupport
-import org.beangle.webmvc.api.annotation.{ mapping, response }
-import org.beangle.webmvc.api.annotation.action
-import org.beangle.data.dao.EntityDao
-import org.beangle.data.dao.OqlBuilder
-import org.beangle.webmvc.api.context.Params
-import org.openurp.edu.exam.model.ExamStudent
-import org.beangle.webmvc.api.annotation.param
 import org.beangle.commons.collection.Properties
+import org.beangle.data.dao.{ EntityDao, OqlBuilder }
+import org.beangle.webmvc.api.action.ActionSupport
+import org.beangle.webmvc.api.annotation.{ mapping, param, response }
+import org.beangle.webmvc.api.context.Params
+import org.openurp.edu.base.model.{ Semester, Student }
 import org.openurp.edu.exam.model.ExamStudent
-import org.openurp.base.model.Semester
-import org.openurp.edu.base.model.Student
 
 class StudentWS extends ActionSupport {
 
