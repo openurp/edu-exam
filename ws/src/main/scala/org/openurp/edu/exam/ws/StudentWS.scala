@@ -24,7 +24,7 @@ import org.beangle.webmvc.api.action.ActionSupport
 import org.beangle.webmvc.api.annotation.{ mapping, param, response }
 import org.beangle.webmvc.api.context.Params
 import org.openurp.edu.base.model.{ Semester, Student }
-import org.openurp.edu.exam.model.ExamStudent
+import org.openurp.edu.exam.model.ExamTaker
 
 class StudentWS extends ActionSupport {
 
@@ -59,7 +59,7 @@ class StudentWS extends ActionSupport {
   }
 
   private def getResult(std: Student, semester: Semester, examTypeId: Option[Int]): Properties = {
-    val builder = OqlBuilder.from(classOf[ExamStudent], "es")
+    val builder = OqlBuilder.from(classOf[ExamTaker], "es")
     builder.where("es.std=:std and es.semester=:semester", std, semester)
     examTypeId foreach { et =>
       builder.where("es.activity.examType.id=:examTypeId", et)
@@ -76,7 +76,7 @@ class StudentWS extends ActionSupport {
     rs
   }
 
-  private def convert(es: ExamStudent): Properties = {
+  private def convert(es: ExamTaker): Properties = {
     val props = new Properties(es, "examType.name")
     props.put("crn", es.clazz.crn)
     props.put("course", new Properties(es.clazz.course, "code", "name"))
