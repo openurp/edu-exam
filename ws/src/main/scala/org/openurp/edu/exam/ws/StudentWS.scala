@@ -1,19 +1,19 @@
 /*
  * OpenURP, Agile University Resource Planning Solution.
  *
- * Copyright © 2005, The OpenURP Software.
+ * Copyright © 2014, The OpenURP Software.
  *
  * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
+ * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  *
- * This program is distributed in the hope that it will be useful,
+ * This program is distributed in the hope that it will be useful.
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
+ * GNU General Public License for more details.
  *
- * You should have received a copy of the GNU Lesser General Public License
+ * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 package org.openurp.edu.exam.ws
@@ -24,7 +24,7 @@ import org.beangle.webmvc.api.action.ActionSupport
 import org.beangle.webmvc.api.annotation.{ mapping, param, response }
 import org.beangle.webmvc.api.context.Params
 import org.openurp.edu.base.model.{ Semester, Student }
-import org.openurp.edu.exam.model.ExamStudent
+import org.openurp.edu.exam.model.ExamTaker
 
 class StudentWS extends ActionSupport {
 
@@ -59,7 +59,7 @@ class StudentWS extends ActionSupport {
   }
 
   private def getResult(std: Student, semester: Semester, examTypeId: Option[Int]): Properties = {
-    val builder = OqlBuilder.from(classOf[ExamStudent], "es")
+    val builder = OqlBuilder.from(classOf[ExamTaker], "es")
     builder.where("es.std=:std and es.semester=:semester", std, semester)
     examTypeId foreach { et =>
       builder.where("es.activity.examType.id=:examTypeId", et)
@@ -76,8 +76,8 @@ class StudentWS extends ActionSupport {
     rs
   }
 
-  private def convert(es: ExamStudent): Properties = {
-    val props = new Properties(es, "examType.name")
+  private def convert(es: ExamTaker): Properties = {
+    val props = new Properties(es, "examType.name", "examStatus.name")
     props.put("crn", es.clazz.crn)
     props.put("course", new Properties(es.clazz.course, "code", "name"))
     es.activity foreach { ea =>
