@@ -3,10 +3,4 @@
   <container name="web">
     <module class="org.openurp.edu.exam.ws.DefaultModule"/>
   </container>
-
-  <container>
-    <module class="org.beangle.serializer.text.DefaultModule"/>
-    <module class="org.beangle.serializer.json.DefaultModule"/>
-    <module class="org.openurp.edu.exam.ws.DaoModule"/>
-  </container>
 </cdi>
