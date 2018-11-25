@@ -77,7 +77,7 @@ class StudentWS extends ActionSupport {
   }
 
   private def convert(es: ExamTaker): Properties = {
-    val props = new Properties(es, "examType.name")
+    val props = new Properties(es, "examType.name", "examStatus.name")
     props.put("crn", es.clazz.crn)
     props.put("course", new Properties(es.clazz.course, "code", "name"))
     es.activity foreach { ea =>
