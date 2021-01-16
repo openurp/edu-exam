@@ -13,23 +13,18 @@
 
   <dependencies>
     <dependency>
-      <groupId>org.openurp.app</groupId>
-      <artifactId>openurp-app-ws</artifactId>
-      <version>${openurp.app.version}</version>
+      <groupId>org.openurp.boot</groupId>
+      <artifactId>openurp-boot-ws</artifactId>
+      <version>${openurp.boot.version}</version>
     </dependency>
     <dependency>
-      <groupId>org.openurp.edu.exam</groupId>
-      <artifactId>openurp-edu-exam-api</artifactId>
+      <groupId>org.openurp.edu</groupId>
+      <artifactId>openurp-edu-api</artifactId>
       <version>${openurp.api.version}</version>
     </dependency>
     <dependency>
-      <groupId>org.openurp.edu.base</groupId>
-      <artifactId>openurp-edu-base-api</artifactId>
-      <version>${openurp.api.version}</version>
-    </dependency>
-    <dependency>
-      <groupId>javax.servlet</groupId>
-      <artifactId>javax.servlet-api</artifactId>
+      <groupId>jakarta.servlet</groupId>
+      <artifactId>jakarta.servlet-api</artifactId>
     </dependency>
   </dependencies>
 </project>
