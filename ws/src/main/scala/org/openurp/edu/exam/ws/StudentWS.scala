@@ -23,7 +23,7 @@ import org.beangle.data.dao.{ EntityDao, OqlBuilder }
 import org.beangle.webmvc.api.action.ActionSupport
 import org.beangle.webmvc.api.annotation.{ mapping, param, response }
 import org.beangle.webmvc.api.context.Params
-import org.openurp.edu.base.model.{ Semester, Student }
+import org.openurp.base.edu.model.{ Semester, Student }
 import org.openurp.edu.exam.model.ExamTaker
 
 class StudentWS extends ActionSupport {
@@ -44,7 +44,7 @@ class StudentWS extends ActionSupport {
     Params.get("semesterCode") foreach { semesterCode =>
       semesters = entityDao.search(OqlBuilder.from(classOf[Semester], "s").where("s.code=:code", semesterCode).cacheable())
     }
-    if (!semesters.isEmpty && !stds.isEmpty) {
+    if (semesters.nonEmpty && stds.nonEmpty) {
       getResult(stds.head, semesters.head, Params.getInt("examTypeId"))
     } else {
       null
@@ -67,11 +67,11 @@ class StudentWS extends ActionSupport {
     val ess = entityDao.search(builder)
 
     val rs = new Properties
-    if (!ess.isEmpty) {
+    if (ess.nonEmpty) {
       val es = ess.head
       rs.put("semesterCode", es.semester.code)
       rs.put("studentName", es.std.user.name)
-      rs.put("activities", ess.map(convert(_)))
+      rs.put("activities", ess.map(convert))
     }
     rs
   }
@@ -81,11 +81,11 @@ class StudentWS extends ActionSupport {
     props.put("crn", es.clazz.crn)
     props.put("course", new Properties(es.clazz.course, "code", "name"))
     es.activity foreach { ea =>
-      if (ea.state.timePublished) {
+      if (ea.publishState.timePublished) {
         props.put("examTime", ea.examOn + " " + ea.beginAt.toString + "~" + ea.endAt.toString)
         props.put("seatNo", es.seatNo)
       }
-      if (ea.state.roomPublished && es.examRoom.isDefined) {
+      if (ea.publishState.roomPublished && es.examRoom.isDefined) {
         props.put("examRoom", es.examRoom.get.room.name)
       }
     }
